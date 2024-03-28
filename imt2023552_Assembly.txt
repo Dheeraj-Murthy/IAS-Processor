@@ -1,0 +1,64 @@
+LOAD   100EQUA   052
+EQUA   051CJUMP  014 
+LOAD   100EQUA   053
+EQUA   051CJUMP  014
+LOAD   100LESS   051
+EQUA   051CJUMP  016
+LOAD   100DIV    052
+EQUA   050CJUMP  016
+LOAD   100DIV    053
+EQUA   050CJUMP  016
+LOAD   055STOR   060
+ADD    052STOR   061
+LOAD MQ060MUL    060
+LESS   100CJUMP  018
+LOAD   051STOR   070
+DISP      END       
+LOAD   050STOR   070
+DISP      END       
+LOAD   100DIV    060
+EQUA   050CJUMP  016
+LOAD   100NOP
+NOP       DIV    061
+EQUA   050CJUMP  016
+LOAD   060ADD    056
+STOR   060ADD    052
+NOP       NOP
+STOR   061JUMP   012
+00000000000000000113
+
+
+Storage:
+050 - 0
+051 - 1
+052 - 2
+053 - 3
+054 - 4
+055 - 5
+056 - 6
+100 - n
+
+
+Reference:
+EQUA - 1 if true else -1 if false
+CJUMP - jump if +ve else continue
+LESS - 1 if less or equal else -1 if greater
+
+ISA:
+0000 0000  : NOP_______
+0000 0001  : LOAD___###
+0000 0010  : LOAD MQ###
+0000 0011  : STOR___###
+0000 0100  : ADD____###
+0000 0101  : SUB____###
+0000 0110  : MUL____###
+0000 0111  : DIV____###
+0000 1000  : JUMP___###
+0000 1001  : CJUMP__###
+0000 1010  : EQUA___###
+0000 1011  : LESS___###
+0000 1100  : MORE___###
+0000 1101  : DISP___###
+0000 1110  : END_______
+
+Dict = {N: NOP, L: LOAD, LOAD MQ, LESS, S: STOR, SUB, A: ADD, M: MUL, MORE, D: DIV, DISP, J: JUMP, C: CJUMP, E: EQUA, END}
